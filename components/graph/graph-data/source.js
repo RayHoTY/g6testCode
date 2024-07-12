@@ -173,14 +173,16 @@ export const data =
                   "target": "2",
                   "date": [
                         1667577645,
-                        1667577813
+                        1667577812,
+                        1667577850,
+                        1667577890
                   ],
                   "event": "Login (Unlock)",
                   "g": null,
                   "ttp": false,
                   "inRange": true,
                   "visible": true,
-                  "frequency": 2,
+                  "frequency": 4,
                   "merged_edges": {
                         "ids": [
                               "12",

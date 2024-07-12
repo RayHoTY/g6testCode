@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import React, { useState, useEffect } from "react";
 // import { data as jsonData } from './sourceActiveDirLog';
 // import { data as jsonData } from './sourceCheckPointLog';
@@ -28,6 +29,7 @@ const templateG5 = () => {
 
 
       setGraph(graph);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [])
     
       return <div ref={ref}></div>

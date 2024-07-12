@@ -109,7 +109,7 @@ const TimeBarLoadTest = () => {
       const range = 200; // number of units that window will show
 
       //transform rawQuery jsonData into nodeEdgeData
-      const nodeEdgeData = { nodes: [], edges: []};
+      
 
       for(let i = 0; i < 201; i++) {
         const nodeId = `node${i}`;

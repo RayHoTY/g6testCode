@@ -1,7 +1,8 @@
 import { imageURLs } from "./imageURLs";
 
 // TODO: should just return the jsonData instead of building another graphData.
-export function populateNodesEdges (jsonData) {
+export function populateNodesEdges (incomingJson) {
+  console.log('incomingJson =', incomingJson);
 
     const graphData = {
       info: [],
@@ -42,7 +43,7 @@ export function populateNodesEdges (jsonData) {
     }                   
     
     // Add icon settings to graphData from BackEnd
-    jsonData.nodes.forEach((node) => {
+    incomingJson.nodes.forEach((node) => {
       // assign custom modeltype/shape to use
       node["type"] = 'circle';
       node["size"] = 24;
@@ -67,21 +68,21 @@ export function populateNodesEdges (jsonData) {
       graphData["nodes"].push(node);
     })  
 
-    graphData["info"].push(jsonData["edges"][0])
+    graphData["info"].push(incomingJson["edges"][0])
     
     // push edge data to Cygraph edge data
     // i starts at 1 to skip timeBar info
-    for(let i = 1; i < jsonData["edges"].length; i++ ) {
-      graphData["edges"].push(jsonData["edges"][i])
+    for(let i = 1; i < incomingJson["edges"].length; i++ ) {
+      graphData["edges"].push(incomingJson["edges"][i])
     }
 
     // push combo data to CyGraph combo data
-    if (jsonData["combos"] !== undefined && jsonData["combos"].length > 0) {
-      for(let i = 0; i < jsonData["combos"].length; i++ ) {
+    if (incomingJson["combos"] !== undefined && incomingJson["combos"].length > 0) {
+      for(let i = 0; i < incomingJson["combos"].length; i++ ) {
         // assign custom modeltype/shape to use
-        jsonData["combos"][i]["type"] = "cCircle";
+        incomingJson["combos"][i]["type"] = "cCircle";
         // push
-        graphData["combos"].push(jsonData["combos"][i]);
+        graphData["combos"].push(incomingJson["combos"][i]);
       }
     }
 
@@ -93,5 +94,6 @@ export function populateNodesEdges (jsonData) {
 
     // CyGraph injects calculated information based on graphData back into it (i.e. coordinates)
     console.log('graphData =', graphData); 
+    console.log('incomingJson =', incomingJson)
     return graphData;
    }
