@@ -845,7 +845,7 @@ const TimeBarTrend
       // for .this combo that is being dropped
       newGraph.on('combo:mouseup', (e) => {
         // log('combo:mouseup')
-        if(draggedOverCombos !== [] && dragleaveCombo !== undefined && dragCombo !== undefined){ 
+        if(draggedOverCombos.length > 0  && dragleaveCombo !== undefined && dragCombo !== undefined){ 
           // prevents deletion of orphan combo when dragging across graph space quickly
           // (dragged Combo id can become dragleave combo id)
           if(dragleaveCombo._cfg !== null && dragleaveCombo.getID() !== dragCombo.getID()) {
@@ -1217,7 +1217,7 @@ const TimeBarTrend
 
       function grabAllCombos(combo, array) {
         let cCombos = combo.getCombos();
-        if(cCombos === []){
+        if(cCombos.length === 0){
           array.push(combo) // <---- ERRONEOUS!
           return array;
         } else {
